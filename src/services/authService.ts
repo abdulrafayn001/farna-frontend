@@ -3,9 +3,10 @@ import Cookies from 'js-cookie';
 import { User } from '../interfaces';
 
 export const isAuthenticated = () => {
+  const hasLocalStorageUserInfo = !!localStorage.getItem('userInfo');
   const hasLocalStorageToken = !!localStorage.getItem('access_token');
   const hasCookieToken = !!Cookies.get('access_token');
-  return hasLocalStorageToken || hasCookieToken;
+  return hasLocalStorageToken || hasCookieToken || hasLocalStorageUserInfo;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
